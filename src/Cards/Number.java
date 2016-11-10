@@ -14,6 +14,7 @@ public enum Number {
     }
 
     public Number next() {
+        // For some games, we allow retrieval of a 'next' even if hasNext is false
         return numbers[(ordinal() + 1) % numNumbers];
     }
 
@@ -22,6 +23,7 @@ public enum Number {
     }
 
     public Number previous() {
+        // For some games, we allow retrieval of a 'previous' even is hasPrevious is false
         return ordinal() == 0 ? numbers[numNumbers - 1] : numbers[ordinal() - 1];
     }
 

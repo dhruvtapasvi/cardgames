@@ -6,19 +6,23 @@ import java.util.HashSet;
  * Created by dhruvtapasvi on 08/11/2016.
  */
 public abstract class CardCollection {
-    private int size  = 0;
     protected HashSet<Card> cards;
 
     public CardCollection() {
         cards = new HashSet<Card>();
     }
 
+    // Should read a little more about how hash sets work before choosing the maximum size like this
     public CardCollection(int maxSize) {
         cards = new HashSet<Card>(maxSize);
     }
 
     public boolean hasCards() {
-        return (size == 0);
+        return !cards.isEmpty();
+    }
+
+    public int size() {
+        return cards.size();
     }
 
     public boolean hasCard(Suit suit, Number number) {
@@ -34,12 +38,7 @@ public abstract class CardCollection {
     }
 
     public boolean removeCard(Card card) {
-        if (cards.remove(card)) {
-            size--;
-            return true;
-        } else {
-            return false;
-        }
+        return cards.remove(card);
     }
 
     public boolean addCard(Suit suit, Number number) {
@@ -47,15 +46,6 @@ public abstract class CardCollection {
     }
 
     public boolean addCard(Card card) {
-        if (cards.add(card)) {
-            size ++;
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public int getSize() {
-        return size;
+        return cards.add(card);
     }
 }

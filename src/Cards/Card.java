@@ -27,8 +27,10 @@ public class Card {
         return (this.suit == other.suit && this.number == other.number);
     }
 
+    // This effectively does number * 16 ^ suit
+    // TODO: Decide whether we want number * 13 ^ suit instead
     public int hashCode() {
-        return (number.ordinal()<<(suit.ordinal()*4));
+        return (number.ordinal()<<(suit.ordinal()<<2));
     }
 
     public String toString() {
